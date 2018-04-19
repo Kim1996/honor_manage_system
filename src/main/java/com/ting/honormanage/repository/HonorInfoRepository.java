@@ -43,4 +43,6 @@ public interface HonorInfoRepository extends CrudRepository<HonorInfo,Long>{
      */
     List<HonorInfo> findHonorInfoByStatus(HonorInfo.Status status);
 
+    List<HonorInfo> findHonorInfoByStatusNotLike(HonorInfo.Status status);
+
 }

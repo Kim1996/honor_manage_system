@@ -2,10 +2,6 @@ package com.ting.honormanage.entity;
 
 import javax.persistence.*;
 
-/**
- * @author nitmali@126.com
- * @date 2018/3/14 15:36
- */
 @Entity
 public class GradeInfo {
     @Id

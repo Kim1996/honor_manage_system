@@ -13,11 +13,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/**
- * @author nitmali@126.com
- * @date 2018/4/10 10:44
- */
-
 @RestController
 public class LoginController {
     @Resource

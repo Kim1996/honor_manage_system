@@ -15,9 +15,6 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author nitmali
- */
 @RestController
 public class CheckerInfoController {
     @Resource

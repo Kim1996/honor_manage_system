@@ -13,10 +13,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @author nitmali@126.com
- * @date 2018/api/manager/3/api/manager/31 14:29
- */
 @RestController
 public class HonorInfoController {
     @Resource

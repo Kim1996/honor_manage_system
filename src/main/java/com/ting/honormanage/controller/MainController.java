@@ -6,9 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * @author nitmali
- */
 @Controller
 public class MainController {
     @GetMapping("/")

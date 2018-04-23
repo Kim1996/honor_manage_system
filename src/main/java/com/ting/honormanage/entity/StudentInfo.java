@@ -4,10 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
-/**
- * @author nitmali@126.com
- * @date 2018/3/14 16:21
- */
 @Entity
 public class StudentInfo {
     @Id

@@ -2,11 +2,6 @@ package com.ting.honormanage.model;
 
 import org.springframework.stereotype.Component;
 
-/**
- * @author nitmali@126.com
- * @date 2018/4/10 10:50
- */
-
 @Component
 public class UserModel {
     private String password;

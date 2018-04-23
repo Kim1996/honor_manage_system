@@ -5,10 +5,6 @@ import com.ting.honormanage.model.HonorInfoModel;
 import javax.persistence.*;
 import java.sql.Date;
 
-/**
- * @author nitmali@126.com
- * @date 2018/3/14 15:58
- */
 @Entity
 public class HonorInfo {
     @Id

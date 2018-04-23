@@ -5,11 +5,6 @@ import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 
-/**
- * @author nitmali@126.com
- * @date 2018/4/9 13:41
- */
-
 @Component
 public class HonorInfoModel {
     private Long id;

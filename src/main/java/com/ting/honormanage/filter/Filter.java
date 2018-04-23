@@ -7,10 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Objects;
 
-/**
- * @author nitmali@126.com
- * @date 2018/4/10 15:43
- */
 @WebFilter(filterName = "Filter", urlPatterns = "/*")
 public class Filter implements javax.servlet.Filter {
 

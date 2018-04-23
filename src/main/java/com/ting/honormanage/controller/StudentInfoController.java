@@ -14,11 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- * @author nitmali@126.com
- * @date 2018/3/27 9:56
- */
-
 @RestController
 public class StudentInfoController {
     @Resource

@@ -15,11 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- * @author nitmali@126.com
- * @date 2018/4/10 15:25
- */
-
 @RestController
 public class ManagerInfoController {
     @Resource

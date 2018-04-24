@@ -3,6 +3,7 @@ package com.ting.honormanage.controller;
 import com.ting.honormanage.entity.HonorInfo;
 import com.ting.honormanage.model.HonorInfoModel;
 import com.ting.honormanage.repository.HonorInfoRepository;
+import com.ting.honormanage.repository.ReportRecordRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +18,9 @@ import java.util.List;
 public class HonorInfoController {
     @Resource
     private HonorInfoRepository honorInfoRepository;
+
+    @Resource
+    private ReportRecordRepository reportRecordRepository;
 
     @GetMapping("/api/manager/get_honorInfo_all")
     public List<HonorInfoModel> getHonorInfoModelList() {
@@ -114,14 +118,11 @@ public class HonorInfoController {
     @PostMapping("/api/manager/delete_honorInfo")
     public String deleteHonorInfo(@RequestBody HonorInfoModel honorInfoModel) {
         HonorInfo honorInfo1 = honorInfoRepository.findHonorInfoById(honorInfoModel.getId());
-        {
-            if (honorInfo1 == null) {
-                return "{\"message\":\"not find honorInfo\"}";
-            } else {
-                honorInfoRepository.delete(honorInfo1);
-            }
-            return "{\"message\":\"delete honorInfo success\"}";
+        if (honorInfo1 == null) {
+            return "{\"message\":\"not find honorInfo\"}";
+        } else {
+            honorInfoRepository.delete(honorInfo1);
         }
+        return "{\"message\":\"delete honorInfo success\"}";
     }
-
 }

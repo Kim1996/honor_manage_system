@@ -114,7 +114,12 @@ public class CheckerInfoController {
 
     @PostMapping("/api/manager/delete_checkerInfo")
     public String deleteCheckerInfo(@RequestBody CheckerInfoModel checkerInfoModel) {
-        checkerInfoRepository.delete(checkerInfoModel.getId());
+        CheckerInfo checkerInfo1 = checkerInfoRepository.findCheckerInfoById(checkerInfoModel.getId());
+        if (checkerInfo1 == null){
+            return "{\"message\":\"not find checkerInfo\"}";
+        } else {
+            checkerInfoRepository.delete(checkerInfo1);
+        }
         return "{\"message\":\"delete checkerInfo success\"}";
     }
 

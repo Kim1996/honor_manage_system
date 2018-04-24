@@ -34,6 +34,8 @@ var honorModalApp = new Vue({
                     if (data.message === "add reportRecord success") {
                         alert("申报成功！");
                         location.reload();
+                    }else if(data.message === "path error"){
+                        alert("上传附件失败！")
                     }
                 },
                 error: function (XMLResponse) {
@@ -44,7 +46,7 @@ var honorModalApp = new Vue({
         close_model: function () {
             $('#honorModalApp').modal('hide');
         },
-        button_confirm: function (status) {
+        button_confirm: function () {
             if (confirm("是否确认您的操作？") === true) {
                 this.add_reportRecord();
             }

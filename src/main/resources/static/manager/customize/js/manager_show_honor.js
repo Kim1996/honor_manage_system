@@ -11,7 +11,7 @@ var honorModalApp = new Vue({
     },
     methods: {
         get_honorInfo_id: function (id) {
-            $.get("/api/manager/get_honorInfo_id",
+            $.get("/api/manager_student/get_honorInfo_id",
                 {
                     id: id
                 },
@@ -28,13 +28,13 @@ var honorModalApp = new Vue({
                 dataType: "json",
                 success: function (data) {
                     if (data.message === "delete honorInfo success") {
-                        alert("删除成功");
+                        alert("删除成功！");
                         location.reload();
                     }
                 },
                 error: function (XMLResponse) {
                     // alert(XMLResponse.responseText);
-                    alert("无法删除！")
+                    alert("该荣誉信息已被使用，无法删除，可修改状态为无效！");
                 }
             });
         }
@@ -48,7 +48,7 @@ var honorModalApp = new Vue({
                 dataType: "json",
                 success: function (data) {
                     if (data.message === "update honorInfo success") {
-                        alert("修改成功");
+                        alert("修改成功！");
                         location.reload();
                     }
                 },
@@ -61,7 +61,7 @@ var honorModalApp = new Vue({
             $('#honorModalApp').modal('hide');
         },
         button_confirm:function (fun) {
-            if (confirm("是否确认您的操作") === true) {
+            if (confirm("是否确认您的操作？") === true) {
                 if(fun === "update_honorInfo"){
                     this.update_honorInfo();
                 }

@@ -19,7 +19,7 @@ var addHonorApp = new Vue({
                     dataType: "json",
                     success: function (data) {
                         if (data.message === "add honorInfo success") {
-                            alert("添加成功");
+                            alert("添加成功！");
                             location.reload();
                         }
                     },
@@ -28,7 +28,7 @@ var addHonorApp = new Vue({
                     }
                 });
             } else {
-                alert("请填写完整信息");
+                alert("请填写完整信息！");
             }
         },
         reset_data: function () {

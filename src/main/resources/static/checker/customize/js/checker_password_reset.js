@@ -28,10 +28,10 @@ var changeCheckerPasswordApp = new Vue({
                     success: function (data) {
                         if (data.message === "change password success") {
                             changeCheckerPasswordApp.reset_data();
-                            alert("修改成功");
+                            alert("修改成功！");
                         } else if (data.message === "old password error") {
                             changeCheckerPasswordApp.reset_data();
-                            alert("原密码错误");
+                            alert("原密码错误！");
                         }
                     },
                     error: function (XMLResponse) {

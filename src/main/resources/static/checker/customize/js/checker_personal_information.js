@@ -18,7 +18,7 @@ var checkerModalApp = new Vue({
                         dataType: "json",
                         success: function (data) {
                             if (data.message === "update checkerInfo success") {
-                                alert("修改成功");
+                                alert("修改成功！");
                                 location.reload();
                             }
                         },
@@ -44,7 +44,7 @@ var checkerModalApp = new Vue({
         verification_phone: function () {
             if (this.checkerInfo.phone.length !== 11 && this.checkerInfo.phone.length !== 6
                 && this.checkerInfo.phone !== '') {
-                alert("请填写有效手机号码");
+                alert("请填写有效手机号码！");
             } else {
                 return true;
             }

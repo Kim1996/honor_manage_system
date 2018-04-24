@@ -28,12 +28,13 @@ var checkerModalApp = new Vue({
                 dataType: "json",
                 success: function (data) {
                     if (data.message === "delete checkerInfo success") {
-                        alert("删除成功");
+                        alert("删除成功！");
                         location.reload();
                     }
                 },
                 error: function (XMLResponse) {
-                    alert(XMLResponse.responseText);
+                    //alert(XMLResponse.responseText);
+                    alert("该审核员信息已被使用，无法删除，可修改状态为无效！");
                 }
             });
         }
@@ -53,7 +54,7 @@ var checkerModalApp = new Vue({
                     dataType: "json",
                     success: function (data) {
                         if (data.message === "update checkerInfo success") {
-                            alert("修改成功");
+                            alert("修改成功！");
                             location.reload();
                         }
                     },
@@ -67,7 +68,7 @@ var checkerModalApp = new Vue({
         verification_password: function () {
             if (checkerModalApp.checkerInfo.password !== '' && checkerModalApp.checkerInfo.password !== null) {
                 if (checkerModalApp.checkerInfo.password.length < 6 || checkerModalApp.checkerInfo.password.length > 16) {
-                    alert("请输入6~16位密码");
+                    alert("请输入6~16位密码！");
                 } else {
                     return true;
                 }
@@ -79,7 +80,7 @@ var checkerModalApp = new Vue({
         verification_phone: function () {
             if (checkerModalApp.checkerInfo.phone.length !== 11 && checkerModalApp.checkerInfo.phone.length !== 6
                 && checkerModalApp.checkerInfo.phone !== '') {
-                alert("请填写有效手机号码");
+                alert("请填写有效手机号码！");
 
             } else {
                 return true;
@@ -89,7 +90,7 @@ var checkerModalApp = new Vue({
             $('#checkerModalApp').modal('hide');
         },
         button_confirm:function (fun) {
-            if (confirm("是否确认您的操作") === true) {
+            if (confirm("是否确认您的操作？") === true) {
                 if(fun === "update_checkerInfo"){
                     this.update_checkerInfo();
                 }

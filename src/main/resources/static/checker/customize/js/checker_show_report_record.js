@@ -30,7 +30,7 @@ var reportRecordModalApp = new Vue({
                 dataType: "json",
                 success: function (data) {
                     if (data.message === "check reportRecord success") {
-                        alert("审核成功");
+                        alert("审核成功！");
                         location.reload();
                     }
                 },
@@ -43,7 +43,7 @@ var reportRecordModalApp = new Vue({
             $('#reportRecordModalApp').modal('hide');
         },
         button_confirm:function (status) {
-            if (confirm("是否确认您的操作") === true) {
+            if (confirm("是否确认您的操作？") === true) {
                 this.check_reportRecord(status);
             }
         }

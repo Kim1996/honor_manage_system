@@ -27,10 +27,10 @@ var changeStudentPasswordApp = new Vue({
                     dataType: "json",
                     success: function (data) {
                         if (data.message === "change password success") {
-                            alert("修改成功");
+                            alert("修改成功！");
                             changeStudentPasswordApp.reset_data();
                         }else if(data.message === "old password error"){
-                            alert("原密码错误");
+                            alert("原密码错误！");
                         }
                     },
                     error: function (XMLResponse) {

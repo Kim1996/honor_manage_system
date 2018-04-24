@@ -28,7 +28,7 @@ var honorModalApp = new Vue({
                 dataType: "json",
                 success: function (data) {
                     if (data.message === "add reportRecord success") {
-                        alert("申报成功");
+                        alert("申报成功！");
                         location.reload();
                     }
                 },
@@ -41,7 +41,7 @@ var honorModalApp = new Vue({
             $('#honorModalApp').modal('hide');
         },
         button_confirm:function (status) {
-            if (confirm("是否确认您的操作") === true) {
+            if (confirm("是否确认您的操作？") === true) {
                 this.add_reportRecord();
             }
         }

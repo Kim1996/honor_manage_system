@@ -34,7 +34,7 @@ var honorModalApp = new Vue({
                 },
                 error: function (XMLResponse) {
                     // alert(XMLResponse.responseText);
-                    alert("该荣誉信息已被使用，无法删除，可修改状态为无效！");
+                    alert("该荣誉信息已被使用，无法删除，可修改状态为失效！");
                 }
             });
         }

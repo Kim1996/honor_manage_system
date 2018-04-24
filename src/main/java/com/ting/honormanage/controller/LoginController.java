@@ -46,7 +46,9 @@ public class LoginController {
         CheckerInfo checkerInfo = checkerInfoRepository.findCheckerInfoByUsername(userModel.getUserName());
         if(checkerInfo == null){
             return "{\"message\":\"user not find\"}";
-        }else if (checkerInfo.getPassword().equals(userModel.getPassword())){
+        }else if(checkerInfo.getAuthority() == CheckerInfo.Authority.INVALID) {
+            return "{\"message\":\"login fail\"}";
+        } else if (checkerInfo.getPassword().equals(userModel.getPassword())){
             session.setAttribute("userType", userModel.getUserType());
             session.setAttribute("userName", userModel.getUserName());
             return "{\"message\":\"login success\"}";

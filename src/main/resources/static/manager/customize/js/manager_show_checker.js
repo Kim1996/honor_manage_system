@@ -34,7 +34,7 @@ var checkerModalApp = new Vue({
                 },
                 error: function (XMLResponse) {
                     //alert(XMLResponse.responseText);
-                    alert("该审核员信息已被使用，无法删除，可修改状态为无效！");
+                    alert("该审核员信息已被使用，无法删除，可修改权限为失效！");
                 }
             });
         }

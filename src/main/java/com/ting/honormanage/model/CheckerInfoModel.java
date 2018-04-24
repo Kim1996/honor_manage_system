@@ -102,14 +102,15 @@ public class CheckerInfoModel {
     public CheckerInfo.Authority authorityOfCheckerInfo() {
         String authorityFIRST_LEVEL = "一级权限";
         String authoritySECOND_LEVEL = "二级权限";
+        String authorityINVALID = "失效";
         if (authorityFIRST_LEVEL.equals(this.authority)) {
             return CheckerInfo.Authority.FIRST_LEVEL;
         } else if (authoritySECOND_LEVEL.equals(this.authority)) {
             return CheckerInfo.Authority.SECOND_LEVEL;
+        } else if (authorityINVALID.equals(this.authority)) {
+            return CheckerInfo.Authority.INVALID;
         } else {
             return null;
         }
     }
-
-
 }

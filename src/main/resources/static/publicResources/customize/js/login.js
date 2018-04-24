@@ -25,9 +25,14 @@ var userLoginApp = new Vue({
                             +"/pages/"+ userLoginApp.userModel.userType +"_index.html";
                         if (data.message === "login success") {
                             userLoginApp.go_to_url(url);
-                        } else {
+                        } else if(data.message === "login fail"){
+                            userLoginApp.userModel.username = '';
                             userLoginApp.userModel.password = '';
-                            alert("账号或者密码错误");
+                            alert("该账号已失效！");
+                        } else {
+                            userLoginApp.userModel.username = '';
+                            userLoginApp.userModel.password = '';
+                            alert("账号或者密码错误！");
                         }
                     },
                     error: function (XMLResponse) {

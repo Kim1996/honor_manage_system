@@ -17,6 +17,8 @@ var reportRecordModalApp = new Vue({
                 },
                 function (reportRecord) {
                     reportRecordModalApp.reportRecord = reportRecord;
+                    $.cookie("reportRecordId",
+                        reportRecordModalApp.reportRecord.id, {expires: 7, path: '/'});
                 });
         }
         ,
@@ -42,7 +44,7 @@ var reportRecordModalApp = new Vue({
         close_model: function () {
             $('#reportRecordModalApp').modal('hide');
         },
-        button_confirm:function (status) {
+        button_confirm: function (status) {
             if (confirm("是否确认您的操作？") === true) {
                 this.check_reportRecord(status);
             }
@@ -110,8 +112,8 @@ function getDataTable() {
                     targets: 5,
                     render: function (data, type, row, meta) {
                         return row.studentInfoMajor
-                            + row.studentInfoGrade.slice(0,2)
-                            + row.studentInfoClass.slice(0,1);
+                            + row.studentInfoGrade.slice(0, 2)
+                            + row.studentInfoClass.slice(0, 1);
                     }
                 }
             ]

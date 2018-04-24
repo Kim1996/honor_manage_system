@@ -1,11 +1,13 @@
 package com.ting.honormanage.controller;
 
 import com.ting.honormanage.entity.*;
-import com.ting.honormanage.model.HonorInfoModel;
 import com.ting.honormanage.model.ReportRecordModel;
 import com.ting.honormanage.repository.*;
-import org.springframework.http.HttpRequest;
+import com.ting.honormanage.service.storage.StorageService;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -30,7 +32,7 @@ public class ReportRecordController {
     private CheckerInfoRepository checkerInfoRepository;
 
     @Resource
-    private CheckRecordRepository checkRecordRepository;
+    private StorageService storageService;
 
     @GetMapping("/api/checker_manager/get_reportRecord_all")
     public List<ReportRecordModel> getReportRecordList() {
@@ -137,12 +139,18 @@ public class ReportRecordController {
     }
 
     @PostMapping("/api/student/add_reportRecord")
-    public String addReportRecord(@RequestBody HonorInfoModel honorInfoModel, HttpServletRequest request) {
+    public String addReportRecord(Long honorInfoId
+            , MultipartFile annex, HttpServletRequest request) {
         HttpSession session = request.getSession();
         StudentInfo studentInfo = studentInfoRepository
                 .findStudentInfoByNumber((String) session.getAttribute("userName"));
-        HonorInfo honorInfo = new HonorInfo(honorInfoModel);
+        HonorInfo honorInfo = honorInfoRepository.findHonorInfoById(honorInfoId);
         ReportRecord reportRecord = new ReportRecord(honorInfo, studentInfo);
+        if (annex.isEmpty()) {
+            return "{\"msg\":\"image error\"}";
+        }
+        String picName = storageService.store(annex);
+        reportRecord.setAnnex(picName);
         reportRecordRepository.save(reportRecord);
         return "{\"message\":\"add reportRecord success\"}";
     }
@@ -254,4 +262,15 @@ public class ReportRecordController {
         return mapList;
     }
 
+    @GetMapping("/api/checker_manager/get_annex")
+    public ResponseEntity<org.springframework.core.io.Resource> getAnnex(Long id) {
+        try {
+            String annexName = reportRecordRepository.findOne(id).getAnnex();
+            org.springframework.core.io.Resource annex = storageService.loadAsResource(annexName);
+            return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                    "attachment; filename=\"" + annexName + "\"").body(annex);
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }

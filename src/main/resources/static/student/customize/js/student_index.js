@@ -20,11 +20,15 @@ var honorModalApp = new Vue({
                 });
         },
         add_reportRecord: function () {
+            var formData = new FormData($("form")[0]);
+            formData.append("honorInfoId", honorModalApp.honorInfo.id);
             $.ajax({
                 url: '/api/student/add_reportRecord',
                 type: 'POST',
-                data: JSON.stringify(honorModalApp.honorInfo, null, 4),
-                contentType: "application/json",
+                cache: false,
+                data: formData,
+                processData: false,
+                contentType: false,
                 dataType: "json",
                 success: function (data) {
                     if (data.message === "add reportRecord success") {
@@ -40,7 +44,7 @@ var honorModalApp = new Vue({
         close_model: function () {
             $('#honorModalApp').modal('hide');
         },
-        button_confirm:function (status) {
+        button_confirm: function (status) {
             if (confirm("是否确认您的操作？") === true) {
                 this.add_reportRecord();
             }
@@ -48,7 +52,7 @@ var honorModalApp = new Vue({
     }
 });
 
-    function getDataTable() {
+function getDataTable() {
     table = $('#show_honor_table').DataTable(
         {
             language: {

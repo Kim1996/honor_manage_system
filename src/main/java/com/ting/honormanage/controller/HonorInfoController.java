@@ -19,9 +19,6 @@ public class HonorInfoController {
     @Resource
     private HonorInfoRepository honorInfoRepository;
 
-    @Resource
-    private ReportRecordRepository reportRecordRepository;
-
     @GetMapping("/api/manager/get_honorInfo_all")
     public List<HonorInfoModel> getHonorInfoModelList() {
         List<HonorInfoModel> honorInfoModelArrayList = new ArrayList<>();

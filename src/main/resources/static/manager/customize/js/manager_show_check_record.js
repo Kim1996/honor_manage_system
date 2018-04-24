@@ -17,6 +17,8 @@ var checkRecordModalApp = new Vue({
                 },
                 function (checkRecord) {
                     checkRecordModalApp.checkRecord = checkRecord;
+                    $.cookie("reportRecordId",
+                        checkRecordModalApp.checkRecord.reportRecordRecordId, {expires: 7, path: '/'});
                 });
         },
         close_model: function () {
@@ -78,8 +80,8 @@ function getDataTable() {
                     targets: 2,
                     render: function (data, type, row, meta) {
                         return row.studentInfoMajor
-                            + row.studentInfoGrade.slice(0,2)
-                            + row.studentInfoClass.slice(0,1);
+                            + row.studentInfoGrade.slice(0, 2)
+                            + row.studentInfoClass.slice(0, 1);
                     }
                 }
             ]

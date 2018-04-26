@@ -3,15 +3,16 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
-$(function() {
+$(function () {
     $('#side-menu').metisMenu();
+    addFooter();
 });
 
 //Loads the correct sidebar on window load,
 //collapses the sidebar on window resize.
 // Sets the min-height of #page-wrapper to window size
-$(function() {
-    $(window).bind("load resize", function() {
+$(function () {
+    $(window).bind("load resize", function () {
         var topOffset = 50;
         var width = (this.window.innerWidth > 0) ? this.window.innerWidth : this.screen.width;
         if (width < 768) {
@@ -33,7 +34,7 @@ $(function() {
     // var element = $('ul.nav a').filter(function() {
     //     return this.href == url;
     // }).addClass('active').parent().parent().addClass('in').parent();
-    var element = $('ul.nav a').filter(function() {
+    var element = $('ul.nav a').filter(function () {
         return this.href == url;
     }).addClass('active').parent();
 
@@ -46,8 +47,20 @@ $(function() {
     }
 });
 
-function logout() {
-
+function addFooter() {
+    //HTML
+    var footer = "<footer>\n" +
+        "    <div class=\"container\">\n" +
+        "        <div class=\"row\">\n" +
+        "            <div class=\"col-sm-12 col-md-4 col-md-offset-4 col-lg-4 col-lg-offset-4\" " +
+        "                  style='text-align: center'>\n" +
+        "                <span>2018 © 高校荣誉管理平台</a></span> |\n" +
+        "                <span><a href=\"mailto:870829382@qq.com\">联系管理员</a></span>\n" +
+        "            </div>\n" +
+        "        </div>\n" +
+        "    </div>\n" +
+        "</footer>";
+    $('body').append(footer);
 }
 
 

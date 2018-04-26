@@ -20,7 +20,7 @@ public class CheckerInfo {
     @Column(nullable = false)
     private String name;
 
-    @Column(length = 11)
+    @Column(length = 11,nullable = false)
     private String phone;
 
     @Column

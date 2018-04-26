@@ -15,6 +15,7 @@ public class ReportRecord {
     @ManyToOne
     private StudentInfo studentInfo;
 
+    @Column(nullable = false)
     private Timestamp recordTime;
     //附件
     @Column

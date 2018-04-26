@@ -14,7 +14,7 @@ public class ManagerInfo {
     @Column(nullable = false)
     private String username;
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
     public Long getId() {

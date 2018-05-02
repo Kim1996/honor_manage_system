@@ -7,7 +7,7 @@ var userLoginApp = new Vue({
         this.userModel.userType = "student";
     },
     methods: {
-        checker_login: function () {
+        check_login: function () {
             if (this.userModel.userName !== undefined && this.userModel.password !== undefined) {
                 if (this.userModel.userType !== "manager") {
                     userLoginApp.userModel.password = md5(md5(userLoginApp.userModel.password) + '8');

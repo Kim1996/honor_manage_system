@@ -21,7 +21,7 @@ $().ready(function () {
             });
         },
         error: function () {
-            alert("System Error!");
+            alert("系统错误!");
         }
     });
 

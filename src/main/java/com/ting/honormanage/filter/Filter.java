@@ -45,7 +45,7 @@ public class Filter implements javax.servlet.Filter {
                 || uri.contains(publicResources)) {
             flag = false;
         }
-//        flag = false;
+
         if (flag) {
             response.sendRedirect("/");
         } else {

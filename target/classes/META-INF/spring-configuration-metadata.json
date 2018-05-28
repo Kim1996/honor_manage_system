@@ -1,0 +1,19 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.ting.honormanage.service.storage.StorageProperties",
+      "name": "storage",
+      "type": "com.ting.honormanage.service.storage.StorageProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.ting.honormanage.service.storage.StorageProperties",
+      "defaultValue": "D:\/\/image\/",
+      "name": "storage.location",
+      "description": "Folder location for storing files",
+      "type": "java.lang.String"
+    }
+  ]
+}

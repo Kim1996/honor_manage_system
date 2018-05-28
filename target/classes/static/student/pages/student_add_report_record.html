@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>学生首页</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../../publicResources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../../publicResources/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="../../publicResources/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../../publicResources/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../../publicResources/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../../publicResources/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="../customize/css/student_index.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-target=".navbar-collapse" data-toggle="collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="student_index.html">高校学生荣誉管理平台</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <!--<li><a href="student_personal_info.html"><i class="fa fa-gear fa-fw"></i>个人中心</a>
+                    </li>-->
+                    <li><a href="student_password_reset.html"><i class="fa fa-gear fa-fw"></i>修改密码</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="/api/logout"><i class="fa fa-sign-out fa-fw"></i>退出</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+
+        <!--/*********************************导航*************************************************************/-->
+        <!-- /.navbar-top-links -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="student_index.html">首页</a>
+                    </li>
+                    <li>
+                        <a href="student_add_report_record.html">荣誉申报</a>
+                    </li>
+                    <li>
+                        <a href="#">申报记录管理<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="student_show_report_record.html">申报记录</a>
+                            </li>
+                            <li>
+                                <a href="student_show_draft_record.html">草稿箱</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+        <!--/*********************************导航*************************************************************/-->
+
+    </nav>
+
+    <div id="page-wrapper">
+        <div id="addReportRecordApp">
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3 class="page-header">
+                        荣誉申报
+                    </h3>
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-offset-2">
+                <form class="bs-example bs-example-form" role="form" enctype="multipart/form-data">
+                    <table calss="table" id="honorInfo" >
+                        <tr>
+                            <td>
+                                <div class="input-group col-xs-12" style="float:left;">
+                                    <span class="input-group-addon">荣誉</span>
+                                    <input type="text" id="honorInfoName" v-model="honorInfo.name" class="form-control" placeholder="请选择您的荣誉" readonly>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="float:left;">
+                                    <a type="button" class="btn btn-primary" style="width:80px;" @click="selectHonorInfo">选择</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height:10px;"></td>
+                        </tr>
+                        <tr >
+                            <td>
+                                <div class="input-group col-xs-12" style="float:left;">
+                                    <span class="input-group-addon">附件</span>
+                                    <input type="text" class="form-control" id="annexname" placeholder="请选择有效图片附件">
+                                </div>
+                            </td>
+                            <td>
+                                <div style="float:left;">
+                                    <a type="button" class="btn btn-primary" style="width:80px;"
+                                       @click="getAnnex">浏览</a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input class="text-info" type="file" id="annex" name="annex" style="display: none;"
+                                        accept="image/*" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-center">
+                                <div col-md-8 col-sm-offset-2>
+                                    <div>
+                                        <img src="../../publicResources/CET-4.jpg" calss="img-thumbnail">
+                                    </div>
+                                    <!--<div>
+                                        <img src="../../publicResources/nitLogo.png" calss="img-thumbnail">
+                                    </div>-->
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="check modal-footer">
+                                    <a type="submit" class="btn btn-success" style="width: 80px"
+                                    @click="button_confirm()">申报</a>
+                                    <a type="submit" class="btn btn-success" style="width: 80px"
+                                    >仅保存</a>
+                                    &emsp;
+                                    <a type="reset" class="btn btn-danger" style="width: 80px"
+                                    @click="reset_data">重置</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div role="dialog" class="modal fade " id="honorInfoApp">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                可申报荣誉
+                                <button type="button" class="close" @click="close_model">&times;</button>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <table class="table table-striped table-bordered table-hover" id="show_honor_table">
+                                    <thead>
+                                    <tr>
+                                        <th>荣誉编号</th>
+                                        <th>荣誉级别</th>
+                                        <th>荣誉类别</th>
+                                        <th>荣誉名称</th>
+                                        <th>荣誉名次</th>
+                                        <th>荣誉日期</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+
+
+<!-- /#wrapper -->
+
+<!-- vue -->
+<script src="https://unpkg.com/vue"></script>
+
+<!-- jQuery -->
+<script src="../../publicResources/vendor/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../../publicResources/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../../publicResources/vendor/metisMenu/metisMenu.min.js"></script>
+
+<!-- DataTables JavaScript -->
+<script src="../../publicResources/vendor/datatables/js/jquery.dataTables.min.js"></script>
+<script src="../../publicResources/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+<script src="../../publicResources/vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="../../publicResources/dist/js/sb-admin-2.js"></script>
+
+<script src="../../publicResources/customize/js/vueJs/vue.js"></script>
+
+<script src="../customize/js/student_add_report_record.js"></script>
+
+</body>
+
+</html>

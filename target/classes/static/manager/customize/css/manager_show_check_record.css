@@ -1,0 +1,17 @@
+#checkRecordInfo table{
+    font-size:15px;
+    border-collapse: collapse;
+}
+
+#checkRecordInfo table td{
+    width: 25%;
+}
+
+#checkRecordInfo table tr td{
+    padding: 8px;
+}
+
+.tableGray{
+    background: #f9f9f9;
+}
+
